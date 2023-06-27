@@ -1,42 +1,35 @@
-import java.util.Scanner;
-import java.lang.Exception;
-class usr extends Exception{
-	usr(String msg){
-		System.out.println(msg);
-	}
+import java.lang.*;
+import java.util.*;
+
+class NegativeException extends Exception{
+    NegativeException(String msg){
+        System.out.println(msg);
+    }
 }
-class pass extends Exception{
-	pass(String msg){
-		System.out.println(msg);
-	}
+
+public class exp {
+    public static void main(String[] args) {
+        Scanner in=new Scanner(System.in);
+        System.out.println("enter the limit of numbers");
+        int sum=0;
+        int n1=in.nextInt();
+        System.out.println("enter "+n1+" NUmbers:\n");
+        for(int i=0;i<n1;i++){
+            int n2=in.nextInt();
+            try{
+                if(n2<0){
+                    i=i-1;
+                    throw new NegativeException("The Number Is Negative,Enter A Positive One\n");
+                }
+                else{
+                    sum=sum+n2;
+                }
+            }
+            catch(NegativeException p){
+                System.out.println(p);
+            }
+            
+        }
+        System.out.println("average of entered numbers :"+sum/n1);
+    }
 }
-public class exp{
-	public static void main(String []args){
-		Scanner in=new Scanner(System.in);
-		String username,password;
-		System.out.println("Enter Username:");
-		username=in.nextLine();
-		System.out.println("Enter Password:");
-		password=in.nextLine();
-		int len=username.length();
-		try{
-			if(len < 8)
-				throw new usr
-				("Username must be greater than 8 characters\n");
-			else if(!password.equals("admin"))
-				throw new pass
-				("Incorrect password\n");
-			else
-				System.out.println("Login SUcessfully");
-			}
-		catch(usr p){
-			System.out.println(p);
-			}
-		catch(pass q){
-			System.out.println(q);
-			}
-		}
-	}
-			
-		
-	
